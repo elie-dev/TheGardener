@@ -1089,11 +1089,11 @@ GameObject:
   - component: {fileID: 1138782162}
   - component: {fileID: 1138782164}
   - component: {fileID: 1138782160}
-  - component: {fileID: 1138782159}
-  - component: {fileID: 1138782165}
   - component: {fileID: 1138782166}
   - component: {fileID: 1138782161}
+  - component: {fileID: 1138782168}
   - component: {fileID: 1138782167}
+  - component: {fileID: 1138782159}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -1283,25 +1283,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1138782165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1138782158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed9c2047fe1838f4baae5e49d12625e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unitName: 
-  tagName: 
-  race: 
-  runSpeed: 0
-  walkSpeed: 0
-  aquisitionRange: 0
-  hitPoints: 0
 --- !u!95 &1138782166
 Animator:
   serializedVersion: 3
@@ -1336,6 +1317,29 @@ MonoBehaviour:
   angleAttack: 0
   coneAngle: {fileID: 1983161564}
   coneAttack: {fileID: 1914479932}
+  damage: 10
+  ennemiesHits:
+  - {fileID: 0}
+--- !u!114 &1138782168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138782158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed9c2047fe1838f4baae5e49d12625e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitName: Player
+  tagName: Joueur
+  race: Humain
+  runSpeed: 4
+  walkSpeed: 2
+  aquisitionRange: 0
+  hitPoints: 200
+  healthBar: {fileID: 1002302566}
 --- !u!1 &1171212283
 GameObject:
   m_ObjectHideFlags: 0
@@ -1521,6 +1525,7 @@ GameObject:
   - component: {fileID: 1495045952}
   - component: {fileID: 1495045951}
   - component: {fileID: 1495045950}
+  - component: {fileID: 1495045954}
   m_Layer: 8
   m_Name: Ennemy2
   m_TagString: Untagged
@@ -1631,6 +1636,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1495045954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495045949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed9c2047fe1838f4baae5e49d12625e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitName: 
+  tagName: 
+  race: 
+  runSpeed: 0
+  walkSpeed: 0
+  aquisitionRange: 0
+  hitPoints: 200
+  healthBar: {fileID: 1623762186}
 --- !u!1 &1623762186
 GameObject:
   m_ObjectHideFlags: 0
@@ -1745,6 +1770,7 @@ GameObject:
   - component: {fileID: 1730648127}
   - component: {fileID: 1730648126}
   - component: {fileID: 1730648129}
+  - component: {fileID: 1730648130}
   m_Layer: 8
   m_Name: ennemy1
   m_TagString: Untagged
@@ -1855,6 +1881,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &1730648130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730648125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed9c2047fe1838f4baae5e49d12625e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitName: "M\xE9chant"
+  tagName: r
+  race: r
+  runSpeed: 0
+  walkSpeed: 0
+  aquisitionRange: 0
+  hitPoints: 100
+  healthBar: {fileID: 2137014869}
 --- !u!1 &1912743783
 GameObject:
   m_ObjectHideFlags: 0
