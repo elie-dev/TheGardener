@@ -10,6 +10,8 @@ public class attack : MonoBehaviour
     public GameObject coneAngle;
     public GameObject coneAttack;
 
+    private Animator anim;
+
     public int damage;
 
     public bool isAttacking = false;
@@ -19,6 +21,11 @@ public class attack : MonoBehaviour
     private float nextMovementTime = 0f;
 
     public List<Collider2D> ennemiesHits;
+
+    void Awake()
+    {
+        anim = this.GetComponent<Animator>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +41,7 @@ public class attack : MonoBehaviour
         {
             movementScript.state = movement.State.Normal;
             isAttacking = false;
+            anim.SetBool("isAttacking", false);
         }
     }
 
@@ -42,6 +50,7 @@ public class attack : MonoBehaviour
         if (Time.time >= nextAttackTime)
         {
             isAttacking = true;
+            anim.SetBool("isAttacking", true);
             movementScript.state = movement.State.Attack;
 
             nextAttackTime = Time.time + attackRate;
