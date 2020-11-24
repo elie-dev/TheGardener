@@ -21,11 +21,12 @@ public class movement : MonoBehaviour
     private float slideSpeed;
     private Vector3 slideDir;
 
-    private State state;
-    private enum State
+    public State state;
+    public enum State
     {
         Normal,
         DodgeRollSliding,
+        Attack,
     }
 
 
@@ -41,15 +42,19 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(state);
         //Debug.Log(state);
         switch(state)
         {
             case State.Normal:
-                move();
+                move(moveInput, speed);
                 orientation();
                 break;
             case State.DodgeRollSliding:
                 handleDodgeRollSliding();
+                break;
+            case State.Attack:
+                move(new Vector2(0, 0), 0f);
                 break;
         }
     }
@@ -87,10 +92,10 @@ public class movement : MonoBehaviour
         }
     }
 
-    public void move()
+    public void move(Vector2 direction ,float speed)
     {
         // déplacement
-        rbPlayer.velocity = moveInput * speed;
+        rbPlayer.velocity = direction * speed;
     }
 
     public void orientation()

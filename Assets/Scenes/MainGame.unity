@@ -1117,6 +1117,7 @@ MonoBehaviour:
   sprintSpeed: 4
   slidingSpeed: 10000
   slidingDistance: 100
+  state: 0
 --- !u!50 &1138782160
 Rigidbody2D:
   serializedVersion: 4
@@ -1318,6 +1319,9 @@ MonoBehaviour:
   coneAngle: {fileID: 1983161564}
   coneAttack: {fileID: 1914479932}
   damage: 10
+  isAttacking: 0
+  attackRate: 0.35
+  attackDuration: 0.3
   ennemiesHits:
   - {fileID: 0}
 --- !u!114 &1138782168
