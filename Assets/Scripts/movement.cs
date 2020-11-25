@@ -104,7 +104,6 @@ public class movement : MonoBehaviour
         if (moveInput.x == 0 & moveInput.y == 0)
         {
             anim.SetBool("isMoving", false);
-            //Debug.Log("immobile");
         }
         else if (Mathf.Abs(moveInput.x) > Mathf.Abs(moveInput.y))
         {
