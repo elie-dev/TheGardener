@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class units : MonoBehaviour
 {
+    // popup text
+    public GameObject popupText;
+    public float positionPopuptext = 1.6f;
+
     public string unitName;
     public string tagName;
     public string race;
@@ -45,6 +49,8 @@ public class units : MonoBehaviour
             Debug.Log(gameObject.name + " est mort");
             gameObject.SetActive(false);
         }
+        GameObject prefabPopupText = Instantiate(popupText, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + positionPopuptext, gameObject.transform.position.z), Quaternion.identity);
+        prefabPopupText.transform.GetChild(0).GetComponent<TextMesh>().text = "-" + damage.ToString();
         healthBar.GetComponent<HealthBar>().SetHealth(hitPoints);
         return false;
     }

@@ -7,20 +7,26 @@ public class movement : MonoBehaviour
 {
     private Rigidbody2D rbPlayer;
     private Animator anim;
-
     private attack attackScript;
 
+    // basic movement
     private Vector2 moveInput;
     private float speed;
     private bool isSprinting = false;
     public float walkSpeed;
     public float sprintSpeed;
 
-    public float slidingSpeed;
-    public float slidingDistance;
-    private float slideSpeed;
-    private Vector3 slideDir;
+    // dash
+    private bool isDashing = false;
+    public float dashSpeed;
+    private float dashTime;
+    public float startDashTime;
+    public int damageDash;
+    private Vector3 dashDir;
+    private List<Collider2D> dashTriggerList = new List<Collider2D>();
+    public GameObject dashEffect;
 
+    // etat du personnage
     public State state;
     public enum State
     {
@@ -42,7 +48,6 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(state);
         //Debug.Log(state);
         switch(state)
         {
@@ -174,20 +179,63 @@ public class movement : MonoBehaviour
     {
         if(state == State.Normal && moveInput != new Vector2(0, 0))
         {
+            isDashing = true;
             state = State.DodgeRollSliding;
-            slideDir = new Vector3(moveInput.x, moveInput.y, transform.position.z);
-            slideSpeed = slidingSpeed;
+            dashDir = new Vector3(moveInput.x, moveInput.y, transform.position.z);
+            dashTime = startDashTime;
+
+            // spawn prefabs effect
+            GameObject dashEffectPref = Instantiate(dashEffect, new Vector3(gameObject.transform.position.x - (moveInput.x * 4), gameObject.transform.position.y - (moveInput.y * 4), 1), Quaternion.Euler(0, 0, 90));
+            gameObject.layer = 10;
+            float angle = Mathf.Atan2(moveInput.x, moveInput.y) * Mathf.Rad2Deg;
+            dashEffectPref.transform.Rotate(0, 0, angle * -1);
+            dashEffectPref.transform.parent = gameObject.transform;
+
+            dashTriggerList = new List<Collider2D>();
         }
     }
 
     public void handleDodgeRollSliding()
     {
-        rbPlayer.velocity = slideDir * slidingSpeed * Time.deltaTime;
-
-        slideSpeed -= slideSpeed * slidingDistance * Time.deltaTime;
-        if (slideSpeed < 5f)
+        if (dashTime <= 0)
         {
-            state = State.Normal;
+            if (isDashing)
+            {
+                isDashing = false;
+                gameObject.layer = 9;
+                state = State.Normal;
+            }
+        } else
+        {
+            rbPlayer.velocity = dashDir * dashSpeed;
+            dashTime -= Time.deltaTime;
         }
+    }
+
+    private void dashDamage(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ennemy") && state == State.DodgeRollSliding)
+        {
+            foreach (Collider2D enemy in dashTriggerList)
+            {
+                if (enemy == other)
+                {
+                    Debug.Log("test");
+                    return;
+                }
+            }
+            dashTriggerList.Add(other);
+            other.GetComponent<units>().takeDamage(damageDash);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        dashDamage(other);
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        dashDamage(other);
     }
 }
