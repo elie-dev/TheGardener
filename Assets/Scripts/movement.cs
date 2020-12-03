@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class movement : MonoBehaviour
 {
+    private units unitsScripts;
     private Rigidbody2D rbPlayer;
     private Animator anim;
     private attack attackScript;
@@ -15,6 +16,7 @@ public class movement : MonoBehaviour
     private bool isSprinting = false;
     public float walkSpeed;
     public float sprintSpeed;
+    public float staminaSprint;
 
     // dash
     private bool isDashing = false;
@@ -22,6 +24,7 @@ public class movement : MonoBehaviour
     private float dashTime;
     public float startDashTime;
     public int damageDash;
+    public float staminaDash;
     private Vector3 dashDir;
     private List<Collider2D> dashTriggerList = new List<Collider2D>();
     public GameObject dashEffect;
@@ -42,6 +45,7 @@ public class movement : MonoBehaviour
         rbPlayer = this.GetComponent<Rigidbody2D>();
         anim = this.GetComponent<Animator>();
         attackScript = GetComponent<attack>();
+        unitsScripts = GetComponent<units>();
         speed = walkSpeed;       
     }
 
@@ -54,6 +58,11 @@ public class movement : MonoBehaviour
             case State.Normal:
                 move(moveInput, speed);
                 orientation();
+                if (isSprinting)
+                {
+                    Debug.Log("sprint");
+                    unitsScripts.changeStamina(staminaSprint * Time.deltaTime);
+                }
                 break;
             case State.DodgeRollSliding:
                 handleDodgeRollSliding();

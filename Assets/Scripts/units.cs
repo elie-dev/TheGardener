@@ -19,6 +19,13 @@ public class units : MonoBehaviour
     public float aquisitionRange;
 
     public int hitPoints;
+    private int maxHitPoint;
+
+    public bool hasStamina = false;
+    public float stamina;
+    private float maxStamina;
+    public float staminaRecovery;
+    public GameObject staminaBar;
 
     // UI
     public GameObject healthBar;
@@ -32,31 +39,71 @@ public class units : MonoBehaviour
     void Start()
     {
         setMaxHealth();
+        maxHitPoint = hitPoints;
+
+        if (hasStamina)
+        {
+            maxStamina = stamina;
+            setMaxStamina();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (hasStamina)
+        {
+            Debug.Log(stamina);
+            staminaRecoveryOverTime();
+        }
     }
 
-    public bool takeDamage(int damage)
+    public void takeDamage(int damage)
     {
         hitPoints -= damage;
         if (hitPoints < 1)
         {
-            //gameObject.SetActive(false);
             Debug.Log(gameObject.name + " est mort");
             gameObject.SetActive(false);
         }
         GameObject prefabPopupText = Instantiate(popupText, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + positionPopuptext, gameObject.transform.position.z), Quaternion.identity);
         prefabPopupText.transform.GetChild(0).GetComponent<TextMesh>().text = "-" + damage.ToString();
-        healthBar.GetComponent<HealthBar>().SetHealth(hitPoints);
-        return false;
+        healthBar.GetComponent<SlideBar>().SetValue(hitPoints);
     }
 
     public void setMaxHealth()
     {
-        healthBar.GetComponent<HealthBar>().SetMaxHealth(hitPoints);
+        healthBar.GetComponent<SlideBar>().SetMaxvalue(hitPoints);
+    }
+
+    public bool changeStamina(float staminas)
+    {
+        if (staminas > stamina)
+        {
+            return false;
+        } else
+        {
+            stamina -= staminas;
+            staminaBar.GetComponent<SlideBar>().SetValue(stamina);
+            return true;
+        }
+    }
+
+    public void setMaxStamina()
+    {
+        staminaBar.GetComponent<SlideBar>().SetMaxvalue(maxStamina);
+    }
+
+    private void staminaRecoveryOverTime()
+    {
+        if (stamina + staminaRecovery > maxStamina)
+        {
+            stamina = maxStamina;
+            setMaxStamina();
+        } else
+        {
+            stamina += staminaRecovery * Time.deltaTime;
+            changeStamina(-staminaRecovery);
+        }
     }
 }
