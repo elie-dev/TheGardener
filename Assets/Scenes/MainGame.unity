@@ -740,6 +740,7 @@ MonoBehaviour:
   hasStamina: 0
   stamina: 0
   staminaRecovery: 0
+  staminaConsume: 0
   staminaBar: {fileID: 0}
   healthBar: {fileID: 1387556416}
 --- !u!50 &499292307
@@ -1084,11 +1085,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 6
   sprintSpeed: 12
-  staminaSprint: 100
+  staminaSprint: 0.1
   dashSpeed: 100
   startDashTime: 0.025
   damageDash: 15
-  staminaDash: 50
+  dashRate: 1
+  staminaDash: 40
   dashEffect: {fileID: 1323044720362557892, guid: d69b43ce3b452ff4eb51be36b943637e, type: 3}
   state: 0
 --- !u!114 &689558049
@@ -1135,7 +1137,8 @@ MonoBehaviour:
   hitPoints: 200
   hasStamina: 1
   stamina: 200
-  staminaRecovery: 2
+  staminaRecovery: 0.05
+  staminaConsume: 0
   staminaBar: {fileID: 1011939682}
   healthBar: {fileID: 1562844661}
 --- !u!70 &689558051
@@ -2442,6 +2445,7 @@ MonoBehaviour:
   hasStamina: 0
   stamina: 0
   staminaRecovery: 0
+  staminaConsume: 0
   staminaBar: {fileID: 0}
   healthBar: {fileID: 1225402647}
 --- !u!50 &2006547455

@@ -25,6 +25,7 @@ public class units : MonoBehaviour
     public float stamina;
     private float maxStamina;
     public float staminaRecovery;
+    public float staminaConsume; 
     public GameObject staminaBar;
 
     // UI
@@ -40,6 +41,7 @@ public class units : MonoBehaviour
     {
         setMaxHealth();
         maxHitPoint = hitPoints;
+        staminaConsume = staminaRecovery;
 
         if (hasStamina)
         {
@@ -53,8 +55,8 @@ public class units : MonoBehaviour
     {
         if (hasStamina)
         {
-            Debug.Log(stamina);
-            staminaRecoveryOverTime();
+            //Debug.Log(stamina);
+            changeStaminaOverTime(staminaConsume);
         }
     }
 
@@ -76,6 +78,11 @@ public class units : MonoBehaviour
         healthBar.GetComponent<SlideBar>().SetMaxvalue(hitPoints);
     }
 
+    public void setMaxStamina()
+    {
+        staminaBar.GetComponent<SlideBar>().SetMaxvalue(maxStamina);
+    }
+
     public bool changeStamina(float staminas)
     {
         if (staminas > stamina)
@@ -84,26 +91,29 @@ public class units : MonoBehaviour
         } else
         {
             stamina -= staminas;
+            Debug.Log(stamina);
             staminaBar.GetComponent<SlideBar>().SetValue(stamina);
             return true;
         }
     }
 
-    public void setMaxStamina()
+    private void changeStaminaOverTime(float staminas)
     {
-        staminaBar.GetComponent<SlideBar>().SetMaxvalue(maxStamina);
-    }
-
-    private void staminaRecoveryOverTime()
-    {
-        if (stamina + staminaRecovery > maxStamina)
+        stamina += staminas;
+        if (stamina < 0)
+        {
+            stamina = 0;
+        }
+        else if (stamina > maxStamina)
         {
             stamina = maxStamina;
-            setMaxStamina();
-        } else
-        {
-            stamina += staminaRecovery * Time.deltaTime;
-            changeStamina(-staminaRecovery);
         }
+        staminaBar.GetComponent<SlideBar>().SetValue(stamina);
+    }
+    
+
+    public void setDefaultRecoveryStamina()
+    {
+        staminaConsume = staminaRecovery;
     }
 }

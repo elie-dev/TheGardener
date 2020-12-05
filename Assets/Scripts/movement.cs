@@ -24,6 +24,8 @@ public class movement : MonoBehaviour
     private float dashTime;
     public float startDashTime;
     public int damageDash;
+    public float dashRate;
+    private float nextDashTime;
     public float staminaDash;
     private Vector3 dashDir;
     private List<Collider2D> dashTriggerList = new List<Collider2D>();
@@ -58,11 +60,7 @@ public class movement : MonoBehaviour
             case State.Normal:
                 move(moveInput, speed);
                 orientation();
-                if (isSprinting)
-                {
-                    Debug.Log("sprint");
-                    unitsScripts.changeStamina(staminaSprint * Time.deltaTime);
-                }
+                changeStaminaSprint();
                 break;
             case State.DodgeRollSliding:
                 handleDodgeRollSliding();
@@ -171,12 +169,12 @@ public class movement : MonoBehaviour
 
     public void OnSprint(InputValue value)
     {
-        if(isSprinting)
+        if(isSprinting && !value.isPressed)
         {
             isSprinting = false;
             speed = walkSpeed;
             anim.SetBool("isSprinting", false);
-        } else
+        } else if (value.isPressed)
         {
             isSprinting = true;
             speed = sprintSpeed;
@@ -184,23 +182,52 @@ public class movement : MonoBehaviour
         }
     }
 
+    public void changeStaminaSprint()
+    {
+        if (isSprinting)
+        {
+            if (unitsScripts.stamina == 0)
+            {
+                isSprinting = false;
+                anim.SetBool("isSprinting", false);
+                setDefaultSpeed();
+            } else
+            {
+                unitsScripts.staminaConsume = -staminaSprint;
+            }
+        } else
+        {
+            unitsScripts.setDefaultRecoveryStamina();
+        }
+    }
+
+    public void setDefaultSpeed()
+    {
+        speed = walkSpeed;
+    }
+
     public void OnDash()
     {
-        if(state == State.Normal && moveInput != new Vector2(0, 0))
+        if(state == State.Normal && moveInput != new Vector2(0, 0) && Time.time >= nextDashTime)
         {
-            isDashing = true;
-            state = State.DodgeRollSliding;
-            dashDir = new Vector3(moveInput.x, moveInput.y, transform.position.z);
-            dashTime = startDashTime;
+            if (unitsScripts.changeStamina(staminaDash))
+            {
+                isDashing = true;
+                state = State.DodgeRollSliding;
+                dashDir = new Vector3(moveInput.x, moveInput.y, transform.position.z);
+                dashTime = startDashTime;
+                nextDashTime = Time.time + dashRate;
 
-            // spawn prefabs effect
-            GameObject dashEffectPref = Instantiate(dashEffect, new Vector3(gameObject.transform.position.x - (moveInput.x * 4), gameObject.transform.position.y - (moveInput.y * 4), 1), Quaternion.Euler(0, 0, 90));
-            gameObject.layer = 10;
-            float angle = Mathf.Atan2(moveInput.x, moveInput.y) * Mathf.Rad2Deg;
-            dashEffectPref.transform.Rotate(0, 0, angle * -1);
-            dashEffectPref.transform.parent = gameObject.transform;
+                // spawn prefabs effect
+                GameObject dashEffectPref = Instantiate(dashEffect, new Vector3(gameObject.transform.position.x - (moveInput.x * 4), gameObject.transform.position.y - (moveInput.y * 4), 1), Quaternion.Euler(0, 0, 90));
+                gameObject.layer = 10;
+                float angle = Mathf.Atan2(moveInput.x, moveInput.y) * Mathf.Rad2Deg;
+                dashEffectPref.transform.Rotate(0, 0, angle * -1);
+                dashEffectPref.transform.parent = gameObject.transform;
 
-            dashTriggerList = new List<Collider2D>();
+                dashTriggerList = new List<Collider2D>();
+            }
+
         }
     }
 
