@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -32,13 +32,12 @@ public class AttackTornade : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D Collision)
     {
         //Debug.Log("test");
-        if (Collision.gameObject.layer == 9){
+        if (Collision.gameObject.layer == 10){
             Debug.Log("Tornage inflige" + damage);
             Collision.gameObject.GetComponent<units>().takeDamage(damage);
             Destroy(gameObject);
-        } else if(Collision.gameObject.layer != 9){
-            Destroy(gameObject);
-        }
+        } else Destroy(gameObject);
+        
 
     }
     
