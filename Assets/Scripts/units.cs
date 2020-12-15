@@ -33,7 +33,7 @@ public class units : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Debug.Log(GetComponent<>().velocity2D);
     }
 
     public bool takeDamage(int damage)
