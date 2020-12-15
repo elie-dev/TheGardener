@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: poubelle1
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: -1848625859146101369, guid: b7f0c9649f6c8b642bb67aee15f815d2, type: 3}
+  - {fileID: -7937494109312588533, guid: b7f0c9649f6c8b642bb67aee15f815d2, type: 3}
+  - {fileID: -9109214629812386945, guid: b7f0c9649f6c8b642bb67aee15f815d2, type: 3}
+  - {fileID: -2525809889238304292, guid: b7f0c9649f6c8b642bb67aee15f815d2, type: 3}
+  m_MinSpeed: 2
+  m_MaxSpeed: 2
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 2
