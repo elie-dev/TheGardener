@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class units : MonoBehaviour
 {
+    // popup text
+    public GameObject popupText;
+    public float positionPopuptext = 1.6f;
+
     public string unitName;
     public string tagName;
     public string race;
@@ -15,6 +19,14 @@ public class units : MonoBehaviour
     public float aquisitionRange;
 
     public int hitPoints;
+    private int maxHitPoint;
+
+    public bool hasStamina = false;
+    public float stamina;
+    private float maxStamina;
+    public float staminaRecovery;
+    public float staminaConsume; 
+    public GameObject staminaBar;
 
     // UI
     public GameObject healthBar;
@@ -28,29 +40,80 @@ public class units : MonoBehaviour
     void Start()
     {
         setMaxHealth();
+        maxHitPoint = hitPoints;
+        staminaConsume = staminaRecovery;
+
+        if (hasStamina)
+        {
+            maxStamina = stamina;
+            setMaxStamina();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(GetComponent<>().velocity2D);
+        if (hasStamina)
+        {
+            //Debug.Log(stamina);
+            changeStaminaOverTime(staminaConsume);
+        }
     }
 
-    public bool takeDamage(int damage)
+    public void takeDamage(int damage)
     {
         hitPoints -= damage;
         if (hitPoints < 1)
         {
-            //gameObject.SetActive(false);
             Debug.Log(gameObject.name + " est mort");
             gameObject.SetActive(false);
         }
-        healthBar.GetComponent<HealthBar>().SetHealth(hitPoints);
-        return false;
+        GameObject prefabPopupText = Instantiate(popupText, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + positionPopuptext, gameObject.transform.position.z), Quaternion.identity);
+        prefabPopupText.transform.GetChild(0).GetComponent<TextMesh>().text = "-" + damage.ToString();
+        healthBar.GetComponent<SlideBar>().SetValue(hitPoints);
     }
 
     public void setMaxHealth()
     {
-        healthBar.GetComponent<HealthBar>().SetMaxHealth(hitPoints);
+        healthBar.GetComponent<SlideBar>().SetMaxvalue(hitPoints);
+    }
+
+    public void setMaxStamina()
+    {
+        staminaBar.GetComponent<SlideBar>().SetMaxvalue(maxStamina);
+    }
+
+    public bool changeStamina(float staminas)
+    {
+        if (staminas > stamina)
+        {
+            return false;
+        } else
+        {
+            stamina -= staminas;
+            Debug.Log(stamina);
+            staminaBar.GetComponent<SlideBar>().SetValue(stamina);
+            return true;
+        }
+    }
+
+    private void changeStaminaOverTime(float staminas)
+    {
+        stamina += staminas;
+        if (stamina < 0)
+        {
+            stamina = 0;
+        }
+        else if (stamina > maxStamina)
+        {
+            stamina = maxStamina;
+        }
+        staminaBar.GetComponent<SlideBar>().SetValue(stamina);
+    }
+    
+
+    public void setDefaultRecoveryStamina()
+    {
+        staminaConsume = staminaRecovery;
     }
 }
