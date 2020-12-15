@@ -42,7 +42,7 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(state);
+        //Debug.Log(state);
         //Debug.Log(state);
         switch(state)
         {
