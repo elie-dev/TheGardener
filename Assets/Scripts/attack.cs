@@ -47,7 +47,7 @@ public class attack : MonoBehaviour
 
     public void OnAttack()
     {
-        if (Time.time >= nextAttackTime)
+        if (Time.time >= nextAttackTime && movementScript.state == movement.State.Normal)
         {
             isAttacking = true;
             anim.SetBool("isAttacking", true);
