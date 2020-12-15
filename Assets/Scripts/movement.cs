@@ -23,7 +23,6 @@ public class movement : MonoBehaviour
     public float dashSpeed;
     private float dashTime;
     public float startDashTime;
-    public int damageDash;
     public float dashRate;
     private float nextDashTime;
     public float staminaDash;
@@ -248,30 +247,4 @@ public class movement : MonoBehaviour
         }
     }
 
-    private void dashDamage(Collider2D other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ennemy") && state == State.DodgeRollSliding)
-        {
-            foreach (Collider2D enemy in dashTriggerList)
-            {
-                if (enemy == other)
-                {
-                    Debug.Log("test");
-                    return;
-                }
-            }
-            dashTriggerList.Add(other);
-            other.GetComponent<units>().takeDamage(damageDash);
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        dashDamage(other);
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        dashDamage(other);
-    }
 }
