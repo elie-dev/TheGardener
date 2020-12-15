@@ -11,7 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Option.unity
     guid: cda04a04ac0ef92479bc135ed6a08b14
+  - enabled: 0
+    path: Assets/Scenes/PathFinding.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/MainGame.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    guid: bcd14a3d4179e4b4ea973761890f380d
   m_configObjects: {}
