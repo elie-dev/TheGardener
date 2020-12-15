@@ -6,6 +6,9 @@ using Pathfinding;
 public class EnnemyMovement : MonoBehaviour
 {
     public AIPath aIPath;
+
+    private EnnemyAttack attackState;
+
     private Animator anim;
     private Rigidbody2D rb;
 
@@ -16,12 +19,20 @@ public class EnnemyMovement : MonoBehaviour
 
     public float speed;
 
+    public State state;
+    public enum State
+    {
+        Normal,
+        Attack,
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         aIPath = GetComponent<AIPath>();
         rb = GetComponent<Rigidbody2D>();
+        attackState = GetComponent<EnnemyAttack>();
     }
 
     // Update is called once per frame
@@ -32,9 +43,15 @@ public class EnnemyMovement : MonoBehaviour
         if (hasReachDestination)
         {
             direction = new Vector2(playerPoisition.position.x - transform.position.x, playerPoisition.position.y - transform.position.y);
+            if (state == State.Normal)
+            {
+                attackState.Attack();
+            }
         }
-        orientation();
-        Debug.Log(aIPath.orientation);
+        if (state != State.Attack)
+        {
+            orientation();
+        }
     }
 
     public void orientation()
@@ -74,14 +91,6 @@ public class EnnemyMovement : MonoBehaviour
                 anim.SetFloat("Vertical", -1);
                 //attackScript.changeAngleAttack(0);
             }
-        }
-
-        if (hasReachDestination)
-        {
-            anim.SetBool("isMoving", false);
-        } else
-        {
-            anim.SetBool("isMoving", true);
         }
     }
 }

@@ -6,7 +6,6 @@ public class attack : MonoBehaviour
 {
     private movement movementScript;
 
-    public float angleAttack;
     public GameObject coneAngle;
     public GameObject coneAttack;
 

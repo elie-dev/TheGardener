@@ -66,10 +66,12 @@ public class units : MonoBehaviour
         if (hitPoints < 1)
         {
             Debug.Log(gameObject.name + " est mort");
-            gameObject.SetActive(false);
+            Destroy(gameObject);
+            //gameObject.SetActive(false);
         }
         GameObject prefabPopupText = Instantiate(popupText, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + positionPopuptext, gameObject.transform.position.z), Quaternion.identity);
         prefabPopupText.transform.GetChild(0).GetComponent<TextMesh>().text = "-" + damage.ToString();
+        prefabPopupText.transform.parent = gameObject.transform;
         healthBar.GetComponent<SlideBar>().SetValue(hitPoints);
     }
 
