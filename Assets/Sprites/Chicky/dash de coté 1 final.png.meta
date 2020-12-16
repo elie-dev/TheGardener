@@ -50,6 +50,18 @@ TextureImporter:
   - first:
       213: 5710619914247039150
     second: "dash de cot\xE9 1 final_15"
+  - first:
+      213: 4344312295610196580
+    second: "dash de cot\xE9 1 final_0"
+  - first:
+      213: -6670886168309907241
+    second: "dash de cot\xE9 1 final_1"
+  - first:
+      213: -8166487641962902782
+    second: "dash de cot\xE9 1 final_2"
+  - first:
+      213: -8848760631336403838
+    second: "dash de cot\xE9 1 final_3"
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -151,8 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 112764a155f427e00800000000000000
-      internalID: 1040981690807644689
+      spriteID: 462253504091a4c30800000000000000
+      internalID: 4344312295610196580
       vertices: []
       indices: 
       edges: []
@@ -172,8 +184,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 17ec32e9c498636f0800000000000000
-      internalID: -705225329473237391
+      spriteID: 7d042d0bf504c63a0800000000000000
+      internalID: -6670886168309907241
       vertices: []
       indices: 
       edges: []
@@ -193,8 +205,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf28f06455e8e2000800000000000000
-      internalID: 13104345827476220
+      spriteID: 20b0f2ee1cecaae80800000000000000
+      internalID: -8166487641962902782
       vertices: []
       indices: 
       edges: []
@@ -214,8 +226,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65cbe5266f14501a0800000000000000
-      internalID: -6843991532251464618
+      spriteID: 28c7bbaa613e23580800000000000000
+      internalID: -8848760631336403838
       vertices: []
       indices: 
       edges: []

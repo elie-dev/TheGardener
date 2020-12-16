@@ -5,6 +5,7 @@ using UnityEngine;
 public class units : MonoBehaviour
 {
     // popup text
+    private Animator anim;
     public GameObject popupText;
     public float positionPopuptext = 1.6f;
 
@@ -39,6 +40,7 @@ public class units : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         setMaxHealth();
         maxHitPoint = hitPoints;
         staminaConsume = staminaRecovery;
@@ -66,9 +68,11 @@ public class units : MonoBehaviour
         if (hitPoints < 1)
         {
             Debug.Log(gameObject.name + " est mort");
-            Destroy(gameObject);
+            anim.SetBool("Death", true);
+            //Destroy(gameObject);
             //gameObject.SetActive(false);
         }
+        anim.SetTrigger("TakeDamage");
         GameObject prefabPopupText = Instantiate(popupText, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + positionPopuptext, gameObject.transform.position.z), Quaternion.identity);
         prefabPopupText.transform.GetChild(0).GetComponent<TextMesh>().text = "-" + damage.ToString();
         prefabPopupText.transform.parent = gameObject.transform;
@@ -117,5 +121,10 @@ public class units : MonoBehaviour
     public void setDefaultRecoveryStamina()
     {
         staminaConsume = staminaRecovery;
+    }
+
+    public void Destroy()
+    {
+        Destroy(gameObject);
     }
 }
