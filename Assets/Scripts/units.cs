@@ -32,6 +32,11 @@ public class units : MonoBehaviour
     // UI
     public GameObject healthBar;
 
+    // Anim takeDamage
+    public Material[] materials;
+    private float timeBetweenAnimation = 0.08f;
+    private SpriteRenderer sprite;
+
     void Awake()
     {
         
@@ -41,6 +46,7 @@ public class units : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
         setMaxHealth();
         maxHitPoint = hitPoints;
         staminaConsume = staminaRecovery;
@@ -72,11 +78,21 @@ public class units : MonoBehaviour
             //Destroy(gameObject);
             //gameObject.SetActive(false);
         }
-        anim.SetTrigger("TakeDamage");
+        StartCoroutine(takeDamageAnimation());
         GameObject prefabPopupText = Instantiate(popupText, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + positionPopuptext, gameObject.transform.position.z), Quaternion.identity);
         prefabPopupText.transform.GetChild(0).GetComponent<TextMesh>().text = "-" + damage.ToString();
         prefabPopupText.transform.parent = gameObject.transform;
         healthBar.GetComponent<SlideBar>().SetValue(hitPoints);
+    }
+
+    public IEnumerator takeDamageAnimation()
+    {
+        foreach (Material material in materials)
+        {
+            sprite.material = material;
+            yield return new WaitForSeconds(timeBetweenAnimation);
+        }
+
     }
 
     public void setMaxHealth()
@@ -123,6 +139,18 @@ public class units : MonoBehaviour
         staminaConsume = staminaRecovery;
     }
 
+    // La function death est appelé au debut de l'animation de mort pour désactiver les components de l'objet
+    public void Death()
+    {
+        MonoBehaviour[] comps = GetComponents<MonoBehaviour>();
+        foreach (MonoBehaviour c in comps)
+        {
+            c.enabled = false;
+        }
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        GetComponent<units>().enabled = true;
+    }
+    // est appelé a la fin de l'anim : détruit l'objet
     public void Destroy()
     {
         Destroy(gameObject);
