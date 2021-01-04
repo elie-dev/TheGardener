@@ -14,8 +14,9 @@ TagManager:
   - 
   - 
   - Ennemy
-  - 
   - Player
+  - PlayerDashing
+  - obstacles
   - 
   - 
   - 

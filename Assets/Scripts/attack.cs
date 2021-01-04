@@ -6,13 +6,13 @@ public class attack : MonoBehaviour
 {
     private movement movementScript;
 
-    public float angleAttack;
     public GameObject coneAngle;
     public GameObject coneAttack;
 
     private Animator anim;
 
     public int damage;
+    public int damageBlock;
 
     public bool isAttacking = false;
     public float attackRate = 2f;
@@ -47,7 +47,7 @@ public class attack : MonoBehaviour
 
     public void OnAttack()
     {
-        if (Time.time >= nextAttackTime)
+        if (Time.time >= nextAttackTime && movementScript.state == movement.State.Normal)
         {
             isAttacking = true;
             anim.SetBool("isAttacking", true);
@@ -59,7 +59,7 @@ public class attack : MonoBehaviour
             Collider2D[] hitEnnemies = coneAttack.GetComponent<attackCollide>().TriggerList.ToArray();
             foreach (Collider2D ennemy in hitEnnemies)
             {
-                ennemy.gameObject.GetComponent<units>().takeDamage(damage);
+                ennemy.gameObject.GetComponent<units>().takeDamage(damage, damageBlock, transform.position);
             }
         }
     }

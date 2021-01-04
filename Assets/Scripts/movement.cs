@@ -5,28 +5,42 @@ using UnityEngine.InputSystem;
 
 public class movement : MonoBehaviour
 {
+    private units unitsScripts;
     private Rigidbody2D rbPlayer;
     private Animator anim;
-
     private attack attackScript;
 
+    // basic movement
     private Vector2 moveInput;
     private float speed;
     private bool isSprinting = false;
     public float walkSpeed;
     public float sprintSpeed;
+    public float staminaSprint;
 
-    public float slidingSpeed;
-    public float slidingDistance;
-    private float slideSpeed;
-    private Vector3 slideDir;
+    // dash
+    private bool isDashing = false;
+    public float dashSpeed;
+    private float dashTime;
+    public float startDashTime;
+    public float dashRate;
+    private float nextDashTime;
+    public float staminaDash;
+    private Vector3 dashDir;
+    private List<Collider2D> dashTriggerList = new List<Collider2D>();
+    public GameObject dashEffect;
 
+    // block
+    public bool isBlocking = false;
+
+    // etat du personnage
     public State state;
     public enum State
     {
         Normal,
         DodgeRollSliding,
         Attack,
+        Block,
     }
 
 
@@ -36,25 +50,32 @@ public class movement : MonoBehaviour
         rbPlayer = this.GetComponent<Rigidbody2D>();
         anim = this.GetComponent<Animator>();
         attackScript = GetComponent<attack>();
+        unitsScripts = GetComponent<units>();
         speed = walkSpeed;       
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(state);
-        //Debug.Log(state);
+        Debug.Log(state);
         switch(state)
         {
             case State.Normal:
                 move(moveInput, speed);
                 orientation();
+                changeStaminaSprint();
                 break;
             case State.DodgeRollSliding:
                 handleDodgeRollSliding();
                 break;
             case State.Attack:
                 move(new Vector2(0, 0), 0f);
+                break;
+            case State.Block:
+                if (rbPlayer.velocity != Vector2.zero)
+                {
+                    rbPlayer.velocity -= rbPlayer.velocity / 2;
+                }
                 break;
         }
     }
@@ -104,7 +125,6 @@ public class movement : MonoBehaviour
         if (moveInput.x == 0 & moveInput.y == 0)
         {
             anim.SetBool("isMoving", false);
-            //Debug.Log("immobile");
         }
         else if (Mathf.Abs(moveInput.x) > Mathf.Abs(moveInput.y))
         {
@@ -158,12 +178,12 @@ public class movement : MonoBehaviour
 
     public void OnSprint(InputValue value)
     {
-        if(isSprinting)
+        if(isSprinting && !value.isPressed)
         {
             isSprinting = false;
             speed = walkSpeed;
             anim.SetBool("isSprinting", false);
-        } else
+        } else if (value.isPressed && moveInput != Vector2.zero)
         {
             isSprinting = true;
             speed = sprintSpeed;
@@ -171,24 +191,86 @@ public class movement : MonoBehaviour
         }
     }
 
+    public void changeStaminaSprint()
+    {
+        if (isSprinting)
+        {
+            if (unitsScripts.stamina == 0)
+            {
+                isSprinting = false;
+                anim.SetBool("isSprinting", false);
+                setDefaultSpeed();
+            } else
+            {
+                unitsScripts.staminaConsume = -staminaSprint;
+            }
+        } else
+        {
+            unitsScripts.setDefaultRecoveryStamina();
+        }
+    }
+
+    public void setDefaultSpeed()
+    {
+        speed = walkSpeed;
+    }
+
     public void OnDash()
     {
-        if(state == State.Normal && moveInput != new Vector2(0, 0))
+        if(state == State.Normal && moveInput != new Vector2(0, 0) && Time.time >= nextDashTime)
         {
-            state = State.DodgeRollSliding;
-            slideDir = new Vector3(moveInput.x, moveInput.y, transform.position.z);
-            slideSpeed = slidingSpeed;
+            if (unitsScripts.changeStamina(staminaDash))
+            {
+                isDashing = true;
+                state = State.DodgeRollSliding;
+                dashDir = new Vector3(moveInput.x, moveInput.y, transform.position.z);
+                dashTime = startDashTime;
+                nextDashTime = Time.time + dashRate;
+
+                // spawn prefabs effect
+                GameObject dashEffectPref = Instantiate(dashEffect, new Vector3(gameObject.transform.position.x - (moveInput.x * 2), gameObject.transform.position.y - (moveInput.y * 2), 1), Quaternion.Euler(0, 0, 90));
+                gameObject.layer = 10;
+                float angle = Mathf.Atan2(moveInput.x, moveInput.y) * Mathf.Rad2Deg;
+                dashEffectPref.transform.Rotate(0, 0, angle * -1);
+                dashEffectPref.transform.parent = gameObject.transform;
+
+                dashTriggerList = new List<Collider2D>();
+            }
         }
     }
 
     public void handleDodgeRollSliding()
     {
-        rbPlayer.velocity = slideDir * slidingSpeed * Time.deltaTime;
-
-        slideSpeed -= slideSpeed * slidingDistance * Time.deltaTime;
-        if (slideSpeed < 5f)
+        if (dashTime <= 0)
         {
-            state = State.Normal;
+            if (isDashing)
+            {
+                isDashing = false;
+                gameObject.layer = 9;
+                state = State.Normal;
+            }
+        } else
+        {
+            rbPlayer.velocity = dashDir * dashSpeed;
+            dashTime -= Time.deltaTime;
         }
     }
+
+    public void OnBlock(InputValue value)
+    {
+        if (isBlocking && !value.isPressed)
+        {
+            isBlocking = false;
+            unitsScripts.isBlocking = false;
+            state = State.Normal;
+        }
+        else if (value.isPressed)
+        {
+            isBlocking = true;
+            unitsScripts.isBlocking = true;
+            unitsScripts.blockDir = new Vector2(anim.GetFloat("Horrizontal"), anim.GetFloat("Vertical"));
+            state = State.Block;
+        }
+    }
+
 }
