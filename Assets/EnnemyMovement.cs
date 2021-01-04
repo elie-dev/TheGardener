@@ -19,11 +19,22 @@ public class EnnemyMovement : MonoBehaviour
 
     public float speed;
 
+    // tornado 
+    [Header("tornado")]
+    public GameObject tornado;
+    public float timeToNextTornadoMin;
+    public float timeToNextTornadoMax;
+    private float timerTornado;
+    private bool isLanchingTornado = false;
+    public float tornadoLaunchTime;
+    public float tornadoLaunchSpeed;
+
     public State state;
     public enum State
     {
         Normal,
         Attack,
+        RangeAttack,
     }
 
     // Start is called before the first frame update
@@ -33,6 +44,7 @@ public class EnnemyMovement : MonoBehaviour
         aIPath = GetComponent<AIPath>();
         rb = GetComponent<Rigidbody2D>();
         attackState = GetComponent<EnnemyAttack>();
+        timerTornado = Time.time + Random.Range(timeToNextTornadoMin, timeToNextTornadoMax);
     }
 
     // Update is called once per frame
@@ -40,17 +52,42 @@ public class EnnemyMovement : MonoBehaviour
     {
         hasReachDestination = aIPath.reachedEndOfPath;
         direction = aIPath.desiredVelocity;
-        if (hasReachDestination)
+        if (state != State.Attack)
+        {
+            orientation();
+            if (Time.time > timerTornado && !isLanchingTornado)
+            {
+                // lancer une tornade 
+                Debug.Log("prepare tornade");
+                aIPath.canMove = false;
+                rb.velocity = Vector2.zero;
+                isLanchingTornado = true;
+                anim.speed = 2;
+                state = State.RangeAttack;
+            }
+            if (isLanchingTornado)
+            {
+                direction = new Vector2(playerPoisition.position.x - transform.position.x, playerPoisition.position.y - transform.position.y);
+                orientation();
+                anim.speed += tornadoLaunchSpeed * Time.deltaTime;
+                if (anim.speed > tornadoLaunchTime)
+                {
+                    isLanchingTornado = false;
+                    anim.speed = 1;
+                    aIPath.canMove = true;
+                    state = State.Normal;
+                    timerTornado = Time.time + Random.Range(timeToNextTornadoMin, timeToNextTornadoMax);
+                    Debug.Log("lance la tornade");
+                }
+            }
+        }
+        if (hasReachDestination && state != State.RangeAttack)
         {
             direction = new Vector2(playerPoisition.position.x - transform.position.x, playerPoisition.position.y - transform.position.y);
             if (state == State.Normal)
             {
                 attackState.Attack();
             }
-        }
-        if (state != State.Attack)
-        {
-            orientation();
         }
     }
 
