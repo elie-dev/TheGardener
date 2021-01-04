@@ -13,6 +13,7 @@ public class EnnemyAttack : MonoBehaviour
     private Rigidbody2D rb;
 
     public int damage;
+    public int damageBlock;
 
     public bool isAttacking = false;
     public float attackRate = 2f;
@@ -48,7 +49,6 @@ public class EnnemyAttack : MonoBehaviour
             aIPath.canMove = true;
             heroAlreadyHits = false;
             anim.SetBool("isAttacking", false);
-            Debug.Log("attaque terminé");
         } else if (isAttacking)
         {
             rb.velocity = attackDir * attackSpeed;
@@ -98,6 +98,6 @@ public class EnnemyAttack : MonoBehaviour
     private void damageHero(GameObject hero)
     {
         heroAlreadyHits = true;
-        hero.GetComponent<units>().takeDamage(damage);
+        hero.GetComponent<units>().takeDamage(damage, damageBlock, transform.position);
     }
 }

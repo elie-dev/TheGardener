@@ -30,6 +30,9 @@ public class movement : MonoBehaviour
     private List<Collider2D> dashTriggerList = new List<Collider2D>();
     public GameObject dashEffect;
 
+    // block
+    public bool isBlocking = false;
+
     // etat du personnage
     public State state;
     public enum State
@@ -37,6 +40,7 @@ public class movement : MonoBehaviour
         Normal,
         DodgeRollSliding,
         Attack,
+        Block,
     }
 
 
@@ -53,7 +57,7 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(state);
+        Debug.Log(state);
         switch(state)
         {
             case State.Normal:
@@ -66,6 +70,12 @@ public class movement : MonoBehaviour
                 break;
             case State.Attack:
                 move(new Vector2(0, 0), 0f);
+                break;
+            case State.Block:
+                if (rbPlayer.velocity != Vector2.zero)
+                {
+                    rbPlayer.velocity -= rbPlayer.velocity / 2;
+                }
                 break;
         }
     }
@@ -173,7 +183,7 @@ public class movement : MonoBehaviour
             isSprinting = false;
             speed = walkSpeed;
             anim.SetBool("isSprinting", false);
-        } else if (value.isPressed)
+        } else if (value.isPressed && moveInput != Vector2.zero)
         {
             isSprinting = true;
             speed = sprintSpeed;
@@ -218,7 +228,7 @@ public class movement : MonoBehaviour
                 nextDashTime = Time.time + dashRate;
 
                 // spawn prefabs effect
-                GameObject dashEffectPref = Instantiate(dashEffect, new Vector3(gameObject.transform.position.x - (moveInput.x * 4), gameObject.transform.position.y - (moveInput.y * 4), 1), Quaternion.Euler(0, 0, 90));
+                GameObject dashEffectPref = Instantiate(dashEffect, new Vector3(gameObject.transform.position.x - (moveInput.x * 2), gameObject.transform.position.y - (moveInput.y * 2), 1), Quaternion.Euler(0, 0, 90));
                 gameObject.layer = 10;
                 float angle = Mathf.Atan2(moveInput.x, moveInput.y) * Mathf.Rad2Deg;
                 dashEffectPref.transform.Rotate(0, 0, angle * -1);
@@ -226,7 +236,6 @@ public class movement : MonoBehaviour
 
                 dashTriggerList = new List<Collider2D>();
             }
-
         }
     }
 
@@ -244,6 +253,23 @@ public class movement : MonoBehaviour
         {
             rbPlayer.velocity = dashDir * dashSpeed;
             dashTime -= Time.deltaTime;
+        }
+    }
+
+    public void OnBlock(InputValue value)
+    {
+        if (isBlocking && !value.isPressed)
+        {
+            isBlocking = false;
+            unitsScripts.isBlocking = false;
+            state = State.Normal;
+        }
+        else if (value.isPressed)
+        {
+            isBlocking = true;
+            unitsScripts.isBlocking = true;
+            unitsScripts.blockDir = new Vector2(anim.GetFloat("Horrizontal"), anim.GetFloat("Vertical"));
+            state = State.Block;
         }
     }
 
