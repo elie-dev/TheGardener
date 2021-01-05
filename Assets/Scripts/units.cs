@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class units : MonoBehaviour
 {
@@ -109,7 +110,10 @@ public class units : MonoBehaviour
             }
             if (direction == blockDir)
             {
-                DamageBlock(damageBlock);
+                if (damageBlock > 0)
+                {
+                    DamageBlock(damageBlock);
+                }
             } else
             {
                 DamageBlock(damage);
@@ -136,13 +140,6 @@ public class units : MonoBehaviour
         prefabPopupText.transform.GetChild(0).GetComponent<TextMesh>().text = "-" + damage.ToString();
         prefabPopupText.transform.parent = gameObject.transform;
         healthBar.GetComponent<SlideBar>().SetValue(hitPoints);
-        if (hitPoints < 1)
-        {
-            Debug.Log(gameObject.name + " est mort");
-            anim.SetBool("Death", true);
-            //Destroy(gameObject);
-            //gameObject.SetActive(false);
-        }
     }
 
     public void DamageBlock(int damageBlock)
@@ -153,13 +150,6 @@ public class units : MonoBehaviour
         prefabPopupText.transform.GetChild(0).GetComponent<TextMesh>().text = "-" + damageBlock.ToString();
         prefabPopupText.transform.parent = gameObject.transform;
         healthBar.GetComponent<SlideBar>().SetValue(hitPoints);
-        if (hitPoints < 1)
-        {
-            Debug.Log(gameObject.name + " est mort");
-            anim.SetBool("Death", true);
-            //Destroy(gameObject);
-            //gameObject.SetActive(false);
-        }
     }
 
     public IEnumerator takeDamageAnimation()
@@ -232,5 +222,9 @@ public class units : MonoBehaviour
     public void Destroy()
     {
         Destroy(gameObject);
+        if (gameObject.name == "Hero")
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 }

@@ -17,11 +17,9 @@ public class EnnemyMovement : MonoBehaviour
     public bool hasReachDestination = false;
     public Vector2 direction;
 
-    public float speed;
-
     // tornado 
     [Header("tornado")]
-    public GameObject tornado;
+    public GameObject tornadoPrefab;
     public float timeToNextTornadoMin;
     public float timeToNextTornadoMax;
     private float timerTornado;
@@ -77,6 +75,7 @@ public class EnnemyMovement : MonoBehaviour
                     aIPath.canMove = true;
                     state = State.Normal;
                     timerTornado = Time.time + Random.Range(timeToNextTornadoMin, timeToNextTornadoMax);
+                    Instantiate(tornadoPrefab, transform.position, Quaternion.identity);
                     Debug.Log("lance la tornade");
                 }
             }
