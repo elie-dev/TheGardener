@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using UnityEngine.SceneManagement;
 
 public class units : MonoBehaviour
@@ -140,6 +141,7 @@ public class units : MonoBehaviour
         prefabPopupText.transform.GetChild(0).GetComponent<TextMesh>().text = "-" + damage.ToString();
         prefabPopupText.transform.parent = gameObject.transform;
         healthBar.GetComponent<SlideBar>().SetValue(hitPoints);
+        FindObjectOfType<AudioManager>().Play(unitName + "Damage");
     }
 
     public void DamageBlock(int damageBlock)
@@ -150,6 +152,7 @@ public class units : MonoBehaviour
         prefabPopupText.transform.GetChild(0).GetComponent<TextMesh>().text = "-" + damageBlock.ToString();
         prefabPopupText.transform.parent = gameObject.transform;
         healthBar.GetComponent<SlideBar>().SetValue(hitPoints);
+        FindObjectOfType<AudioManager>().Play(unitName + "Damage");
     }
 
     public IEnumerator takeDamageAnimation()
@@ -217,6 +220,8 @@ public class units : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         GetComponent<Collider2D>().enabled = false;
         GetComponent<units>().enabled = true;
+
+        FindObjectOfType<AudioManager>().Play(unitName + "Death");
     }
     // est appelé a la fin de l'anim : détruit l'objet
     public void Destroy()

@@ -22,6 +22,8 @@ public class attack : MonoBehaviour
 
     public List<Collider2D> ennemiesHits;
 
+    // audio
+    private int nbAttackAudio = 0;
     void Awake()
     {
         anim = this.GetComponent<Animator>();
@@ -39,7 +41,10 @@ public class attack : MonoBehaviour
         
         if (isAttacking && Time.time >= nextMovementTime)
         {
-            movementScript.state = movement.State.Normal;
+            if (movementScript.state == movement.State.Attack)
+            {
+                movementScript.state = movement.State.Normal;
+            }
             isAttacking = false;
             anim.SetBool("isAttacking", false);
         }
@@ -47,7 +52,7 @@ public class attack : MonoBehaviour
 
     public void OnAttack()
     {
-        if (Time.time >= nextAttackTime && movementScript.state == movement.State.Normal)
+        if (Time.time >= nextAttackTime && movementScript.state == movement.State.Normal && movementScript.state != movement.State.Block)
         {
             isAttacking = true;
             anim.SetBool("isAttacking", true);
@@ -60,6 +65,24 @@ public class attack : MonoBehaviour
             foreach (Collider2D ennemy in hitEnnemies)
             {
                 ennemy.gameObject.GetComponent<units>().takeDamage(damage, damageBlock, transform.position);
+            }
+            if (hitEnnemies.Length > 0)
+            {
+                int nbAudio = nbAttackAudio % 3;
+                Debug.Log(nbAudio);
+                switch(nbAudio)
+                {
+                    case 0:
+                        FindObjectOfType<AudioManager>().Play("PelleGrave");
+                        break;
+                    case 1:
+                        FindObjectOfType<AudioManager>().Play("PelleMedium");
+                        break;
+                    case 2:
+                        FindObjectOfType<AudioManager>().Play("PelleAigue");
+                        break;
+                }
+                nbAttackAudio++;
             }
         }
     }

@@ -261,12 +261,14 @@ public class movement : MonoBehaviour
         if (isBlocking && !value.isPressed)
         {
             isBlocking = false;
+            anim.SetBool("isBlocking", false);
             unitsScripts.isBlocking = false;
             state = State.Normal;
         }
         else if (value.isPressed)
         {
             isBlocking = true;
+            anim.SetBool("isBlocking", true);
             unitsScripts.isBlocking = true;
             unitsScripts.blockDir = new Vector2(anim.GetFloat("Horrizontal"), anim.GetFloat("Vertical"));
             state = State.Block;

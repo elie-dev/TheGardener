@@ -49,7 +49,11 @@ public class EnnemyMovement : MonoBehaviour
     void Update()
     {
         hasReachDestination = aIPath.reachedEndOfPath;
-        direction = aIPath.desiredVelocity;
+        if (!hasReachDestination)
+        {
+            direction = aIPath.desiredVelocity;
+        }
+        
         if (state != State.Attack)
         {
             orientation();
@@ -76,7 +80,8 @@ public class EnnemyMovement : MonoBehaviour
                     state = State.Normal;
                     timerTornado = Time.time + Random.Range(timeToNextTornadoMin, timeToNextTornadoMax);
                     Instantiate(tornadoPrefab, transform.position, Quaternion.identity);
-                    Debug.Log("lance la tornade");
+                    attackState.nextAttackTime = Time.time + attackState.attackRate;
+                    //Debug.Log("lance la tornade");
                 }
             }
         }

@@ -48,7 +48,7 @@ public class AttackTornade : MonoBehaviour
         }
         else if (Collision.gameObject.layer == 11)
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 }

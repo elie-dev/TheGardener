@@ -17,7 +17,7 @@ public class EnnemyAttack : MonoBehaviour
 
     public bool isAttacking = false;
     public float attackRate = 2f;
-    private float nextAttackTime = 0f;
+    public float nextAttackTime = 0f;
     public float attackDuration = 0.5f;
     public float attackSpeed = 5f;
     private float nextMovementTime = 0f;
