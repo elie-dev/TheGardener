@@ -16,7 +16,7 @@ public class AttackTornade : MonoBehaviour
 
     private void Start () {
         if (playerObj == null)
-             playerObj = GameObject.Find("Hero");
+             playerObj = GameObject.Find("Leaf");
         
         wantedPositon = transform.position; //Pour que l'objet soit à sa place initiale dans la scene
         timer = Time.time + lifeTime;

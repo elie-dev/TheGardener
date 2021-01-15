@@ -35,6 +35,11 @@ public class EnnemyMovement : MonoBehaviour
         RangeAttack,
     }
 
+    private void Awake()
+    {
+        playerPoisition = GameObject.Find("Leaf").transform;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
