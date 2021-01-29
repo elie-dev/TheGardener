@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class units : MonoBehaviour
 {
+    // gamemanager
+    ListEnnemies gameManager;
+    public bool isEnnemy = true;
+
     // popup text
     private Animator anim;
     public GameObject popupText;
@@ -55,6 +59,8 @@ public class units : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<ListEnnemies>();
+        if(isEnnemy) gameManager.addEnnemy(gameObject);
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
         setMaxHealth();
@@ -226,8 +232,9 @@ public class units : MonoBehaviour
     // est appelé a la fin de l'anim : détruit l'objet
     public void Destroy()
     {
+        if (isEnnemy) gameManager.removeEnnemy(gameObject);
         Destroy(gameObject);
-        if (gameObject.name == "Hero")
+        if (gameObject.name == "Leaf")
         {
             SceneManager.LoadScene("MainMenu");
         }

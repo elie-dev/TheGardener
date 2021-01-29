@@ -6,7 +6,7 @@ public class DifficultyManager : MonoBehaviour
 {
 
     public enum Difficulties{Easy, Medium, Hard};
-    public static Difficulties Difficulty = Difficulties.Hard;
+    public static Difficulties Difficulty = Difficulties.Medium;
 
     public static DifficultyManager instance;
 

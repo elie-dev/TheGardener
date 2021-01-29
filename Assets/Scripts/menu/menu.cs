@@ -24,6 +24,7 @@ public class menu : MonoBehaviour
 
     public void loadlevel(string level)
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(level);
     }
 }

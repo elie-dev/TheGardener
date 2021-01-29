@@ -121,6 +121,7 @@ public class movement : MonoBehaviour
 
     public void orientation()
     {
+        if (Time.timeScale == 0) return;
         //verifie l'orientation
         if (moveInput.x == 0 & moveInput.y == 0)
         {

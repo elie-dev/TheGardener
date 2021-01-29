@@ -18,7 +18,7 @@ namespace Pathfinding {
 		public Transform target;
 		IAstarAI ai;
 
-		private void Awake()
+		public void Start()
 		{
 			target = GameObject.Find("Leaf").transform;
 		}
