@@ -1,0 +1,33 @@
+{
+    "name": "controls ps4",
+    "maps": [
+        {
+            "name": "gamepade",
+            "id": "0adfac3b-c2de-4e7e-ad9b-dcdf71e7a286",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Button",
+                    "id": "ca930790-ca62-4145-ab26-3e37d6a634e0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "88f15f2a-8000-4512-b389-6c43d8161160",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
