@@ -18,6 +18,7 @@ public class Destroy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Debug.Log("test");
     }
 
     public void DestroyObject()
