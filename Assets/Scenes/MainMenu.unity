@@ -1507,6 +1507,30 @@ PrefabInstance:
       propertyPath: sounds.Array.data[7].loop
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2703974608420387724, guid: bc300e817488aa04a90306b514c918d9, type: 3}
+      propertyPath: sounds.Array.data[8].name
+      value: Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 2703974608420387724, guid: bc300e817488aa04a90306b514c918d9, type: 3}
+      propertyPath: sounds.Array.data[8].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 362ac6a5143fb4d418b4801783d3d050, type: 3}
+    - target: {fileID: 2703974608420387724, guid: bc300e817488aa04a90306b514c918d9, type: 3}
+      propertyPath: sounds.Array.data[8].volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2703974608420387724, guid: bc300e817488aa04a90306b514c918d9, type: 3}
+      propertyPath: sounds.Array.data[8].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2703974608420387724, guid: bc300e817488aa04a90306b514c918d9, type: 3}
+      propertyPath: sounds.Array.data[8].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2703974608420387724, guid: bc300e817488aa04a90306b514c918d9, type: 3}
+      propertyPath: sounds.Array.data[8].StartTime
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 2703974608420387725, guid: bc300e817488aa04a90306b514c918d9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.9510382

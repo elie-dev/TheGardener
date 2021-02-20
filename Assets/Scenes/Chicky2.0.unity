@@ -3894,6 +3894,7 @@ GameObject:
   - component: {fileID: 1191549892}
   - component: {fileID: 1191549891}
   - component: {fileID: 1191549890}
+  - component: {fileID: 1191549896}
   - component: {fileID: 1191549889}
   - component: {fileID: 1191549888}
   - component: {fileID: 1191549887}
@@ -3938,9 +3939,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.022839546, y: -0.14471269}
+  m_Offset: {x: 0, y: -0.15}
   serializedVersion: 2
-  m_Radius: 0.6170964
+  m_Radius: 0.61
 --- !u!95 &1191549889
 Animator:
   serializedVersion: 3
@@ -3951,7 +3952,7 @@ Animator:
   m_GameObject: {fileID: 1191549886}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7aa9cf0a17929da41986765c779247fb, type: 2}
+  m_Controller: {fileID: 9100000, guid: dfb56060ed36f46428727a59ad5490cd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4023,7 +4024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  drawGizmos: 1
+  drawGizmos: 0
   detailedGizmos: 0
   startEndModifier:
     addPoints: 0
@@ -4137,6 +4138,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1191549896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191549886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 268b9b005505b1e489dddbc0be4c8652, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPosition: {fileID: 0}
+  aIPath: {fileID: 0}
+  rbChicky: {fileID: 0}
+  dashSpeed: 5
+  dashAttackRange: 0.61
+  dashAttackDamage: 40
+  dashAttackDamageBlock: 0
+  attackOffset: {x: 0, y: -0.15, z: 0}
+  attackMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &1198331408
 GameObject:
   m_ObjectHideFlags: 0
@@ -5265,7 +5289,39 @@ MonoBehaviour:
     _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
     _AreaColors:
     - {r: 0, g: 0, b: 0, a: 0}
-  tagNames: []
+  tagNames:
+  - Basic Ground
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
   heuristic: 2
   heuristicScale: 1
   threadCount: 1
