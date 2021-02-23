@@ -189,7 +189,6 @@ public class units : MonoBehaviour
         } else
         {
             stamina -= staminas;
-            Debug.Log(stamina);
             staminaBar.GetComponent<SlideBar>().SetValue(stamina);
             return true;
         }

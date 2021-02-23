@@ -10,11 +10,17 @@ public class Chicky : MonoBehaviour
     [HideInInspector] public Rigidbody2D rbChicky;
 
     public float dashSpeed = 5f;
-    public float dashAttackRange = 2f;
     public int dashAttackDamage = 40;
     public int dashAttackDamageBlock = 0;
+    public float timeBetweenDashAttack;
+
+    public float dashAttackRange = 2f;
     public Vector3 attackOffset;
     private Vector3 attackDir;
+
+    [Range(0, 1)] public float tornadoAttackDashAttackRate;
+
+    public float timeToLaunchTornado;
 
     public LayerMask attackMask;
 
@@ -43,16 +49,16 @@ public class Chicky : MonoBehaviour
     public bool attackDash(Vector2 direction)
     {
         attackDir = new Vector2(transform.position.x + (direction.x / 10f), transform.position.y + (direction.y / 10f));
+        attackDir += transform.right * attackOffset.x;
+        attackDir += transform.up * attackOffset.y;
         Collider2D colInfo = Physics2D.OverlapCircle(attackDir, dashAttackRange, attackMask);
         if (colInfo != null)
         {
-            Debug.Log("bool true");
             colInfo.GetComponent<units>().takeDamage(dashAttackDamage, dashAttackDamageBlock, transform.position);
             return true;
             
         } else
         {
-            Debug.Log("bool false");
             return false;
         }
     }
