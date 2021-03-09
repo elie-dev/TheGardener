@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using TMPro;
 
 public class SettingsMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
+    public Slider sliderAudio;
+    public TextMeshProUGUI audioText;
 
-    public Dropdown resolutionDropdown;
+    public TMPro.TMP_Dropdown resolutionDropdown;
 
     Resolution[] resolutions;
     void Start ()
     {
+        setInitialValueVolume();
         resolutions = Screen.resolutions;
 
         resolutionDropdown.ClearOptions();
@@ -48,6 +52,15 @@ public class SettingsMenu : MonoBehaviour
     public void SetVolume (float volume)
     {
         audioMixer.SetFloat("volume",volume);
+    }
+
+    public void setInitialValueVolume()
+    {
+        float value;
+        audioMixer.GetFloat("volume", out value);
+        sliderAudio.value = value;
+        value += 80;
+        audioText.SetText(value.ToString());
     }
 
     public void SetQuality (int qualityIndex)

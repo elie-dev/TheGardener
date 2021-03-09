@@ -2,25 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class toggle : MonoBehaviour
 {
 
-    public string textFlase;
+    public string textFalse;
     public string textTrue;
-    public Text targetText;
+    public TextMeshProUGUI targetText;
 
-    public bool toggleBool = false; 
+    public bool toggleBool = false;
 
     public void changeText()
     {
         toggleBool = !toggleBool;
         if (toggleBool)
         {
-            targetText.text = textTrue;
+            targetText.SetText(textTrue);
         } else
         {
-            targetText.text = textFlase;
+            targetText.SetText(textFalse);
         }
     }
 }

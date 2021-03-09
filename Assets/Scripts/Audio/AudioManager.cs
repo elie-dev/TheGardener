@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
     public String[] soundsToPlayAtStart;
+    public AudioMixerGroup mixerGroup;
 
     public static AudioManager instance;
 
@@ -34,6 +35,7 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
             s.source.time = s.StartTime;
+            s.source.outputAudioMixerGroup = mixerGroup;
         }
     }
 

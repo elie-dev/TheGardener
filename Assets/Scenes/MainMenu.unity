@@ -1952,6 +1952,10 @@ PrefabInstance:
       propertyPath: sounds.Array.data[8].StartTime
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 2703974608420387724, guid: bc300e817488aa04a90306b514c918d9, type: 3}
+      propertyPath: mixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 195efad41d606154090fe355a436c49b, type: 2}
     - target: {fileID: 2703974608420387725, guid: bc300e817488aa04a90306b514c918d9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.9510382
