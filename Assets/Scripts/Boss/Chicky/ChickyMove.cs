@@ -21,7 +21,7 @@ public class ChickyMove : StateMachineBehaviour
         if (random <= chicky.tornadoAttackDashAttackRate)
         {
             launchTornado = true;
-            Debug.Log("test");
+            Debug.Log("tornade !");
             animator.SetTrigger("PrepareTornado");
         } else
         {

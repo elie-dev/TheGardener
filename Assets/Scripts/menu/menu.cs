@@ -22,10 +22,10 @@ public class menu : MonoBehaviour
         Application.Quit();
     }
 
-    public void loadlevel(string level)
+    public void loadlevel(string Chicky)
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(level);
+        SceneManager.LoadScene(Chicky);
     }
 
     public void openLink(string Url)
