@@ -27,4 +27,9 @@ public class menu : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(level);
     }
+
+    public void openLink(string Url)
+    {
+        Application.OpenURL(Url);
+    }
 }
