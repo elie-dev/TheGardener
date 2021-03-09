@@ -2716,6 +2716,7 @@ MonoBehaviour:
   playerInput: {fileID: -944628639613478452, guid: 9a58114cd8945e44ab06485e2d946672, type: 3}
   inputKeyPrefab: {fileID: 4791263848388338245, guid: 0b8adbe0903151e4693f5eb75671ebe2, type: 3}
   content: {fileID: 1112093657}
+  numberPerLine: 2
   yTranslation: -130
 --- !u!114 &434369405
 MonoBehaviour:
@@ -6745,9 +6746,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 121321899}
   m_Direction: 0
   m_MinValue: -80
-  m_MaxValue: 20
+  m_MaxValue: 50
   m_WholeNumbers: 0
-  m_Value: 20
+  m_Value: 5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
