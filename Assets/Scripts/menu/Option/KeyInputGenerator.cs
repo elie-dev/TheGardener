@@ -10,6 +10,9 @@ public class KeyInputGenerator : MonoBehaviour
     public InputActionAsset playerInput;
     public GameObject inputKeyPrefab;
     public GameObject content;
+    private float lineWith = 710f;
+    public int numberPerLine = 2;
+    private int lineWithCount = 0;
     public int yTranslation;
 
     // Start is called before the first frame update
@@ -29,10 +32,15 @@ public class KeyInputGenerator : MonoBehaviour
                     //position ui
                     inputKey.transform.SetParent(content.transform);
                     RectTransform rt = inputKey.GetComponent<RectTransform>();
-                    rt.localPosition = new Vector3(-30, -100 + (yTranslation * yCount));
+                    rt.localPosition = new Vector3((lineWith / 2) * lineWithCount, (yTranslation * (yCount / numberPerLine)));
 
                     inputKey.GetComponent<KeyInput>().indexBinding = i;
                     inputKey.GetComponent<KeyInput>().initializedInputKey(playerInput.actionMaps[0].actions[0]);
+                    lineWithCount++;
+                    if (lineWithCount == numberPerLine)
+                    {
+                        lineWithCount = 0;
+                    }
                     i++;
                     yCount++;
                 }
@@ -43,10 +51,15 @@ public class KeyInputGenerator : MonoBehaviour
                 //position ui
                 inputKey.transform.SetParent(content.transform);
                 RectTransform rt = inputKey.GetComponent<RectTransform>();
-                rt.localPosition = new Vector3(-30, -100 + (yTranslation * yCount));
+                rt.localPosition = new Vector3((lineWith / 2) * lineWithCount, (yTranslation * (yCount / numberPerLine)));
 
                 // set action
                 inputKey.GetComponent<KeyInput>().initializedInputKey(inputAction);
+                lineWithCount++;
+                if (lineWithCount == numberPerLine)
+                {
+                    lineWithCount = 0;
+                }
                 yCount++;
             }
             index++;
