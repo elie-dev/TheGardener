@@ -1,88 +1,88 @@
 fileFormatVersion: 2
-guid: 793cf571a168bd7489047ba5011aec21
+guid: b66d044f5b7692749bd55a1075755f2d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1670643491629915408
-    second: glowup casino_0
+      213: 5933940753128943528
+    second: dance1_0
   - first:
-      213: 9157860773530648093
-    second: glowup casino_1
+      213: 2346474568038430905
+    second: dance1_1
   - first:
-      213: -8330538737276639053
-    second: glowup casino_2
+      213: 6608904620015497515
+    second: dance1_2
   - first:
-      213: -7716807337155910440
-    second: glowup casino_3
+      213: 9153806992323925407
+    second: dance1_3
   - first:
-      213: -4308036226769318275
-    second: glowup casino_4
+      213: -2031244041632521439
+    second: dance1_4
   - first:
-      213: -2529882661594221090
-    second: glowup casino_5
+      213: 2905042152972155816
+    second: dance1_5
   - first:
-      213: 4517012661093856820
-    second: glowup casino_6
+      213: -2569051479839844211
+    second: dance1_6
   - first:
-      213: -4199970020809521761
-    second: glowup casino_7
+      213: 1147958313424580493
+    second: dance1_7
   - first:
-      213: -214413511124711462
-    second: glowup casino_8
+      213: 6693301073539458166
+    second: dance1_8
   - first:
-      213: 8528067316409240016
-    second: glowup casino_9
+      213: -42072352230743481
+    second: dance1_9
   - first:
-      213: 7269986994492113237
-    second: glowup casino_10
+      213: 1917940964651945939
+    second: dance1_10
   - first:
-      213: 6612886663429041389
-    second: glowup casino_11
+      213: 6202422825176475142
+    second: dance1_11
   - first:
-      213: -1814181019315717102
-    second: glowup casino_12
+      213: 6454331495594593747
+    second: dance1_12
   - first:
-      213: -1730850403605439096
-    second: glowup casino_13
+      213: 7411512310235796434
+    second: dance1_13
   - first:
-      213: -2633785693266852326
-    second: glowup casino_14
+      213: 7315428465116038923
+    second: dance1_14
   - first:
-      213: -7832476860842395524
-    second: glowup casino_15
+      213: 555241386353702937
+    second: dance1_15
   - first:
-      213: -1652360896581771414
-    second: glowup casino_16
+      213: -4100688060209472260
+    second: dance1_16
   - first:
-      213: 2893796906138554267
-    second: glowup casino_17
+      213: -6740764114657575898
+    second: dance1_17
   - first:
-      213: 4375911717152875828
-    second: glowup casino_18
+      213: 8566197831675223678
+    second: dance1_18
   - first:
-      213: -6514760744941555445
-    second: glowup casino_19
+      213: 7327716357275203225
+    second: dance1_19
   - first:
-      213: 2308211744094381366
-    second: glowup casino_20
+      213: -3017287335313713319
+    second: dance1_20
   - first:
-      213: 2276954150368887755
-    second: glowup casino_21
+      213: 2425877692784996940
+    second: dance1_21
   - first:
-      213: -2082059562240939128
-    second: glowup casino_22
+      213: -2481544069030693288
+    second: dance1_22
   - first:
-      213: 739297562307023521
-    second: glowup casino_23
+      213: 166489170246030422
+    second: dance1_23
   - first:
-      213: -828075511658148783
-    second: glowup casino_24
+      213: -574866362307040718
+    second: dance1_24
   - first:
-      213: -5399066499948107904
-    second: glowup casino_25
+      213: -4246957264913631711
+    second: dance1_25
   - first:
-      213: 5242319694406046887
-    second: glowup casino_26
+      213: -3210351482707813715
+    second: dance1_26
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -170,7 +170,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: glowup casino_0
+      name: dance1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -184,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01d5be877615f2710800000000000000
-      internalID: 1670643491629915408
+      spriteID: 8afe674fca7995250800000000000000
+      internalID: 5933940753128943528
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_1
+      name: dance1_1
       rect:
         serializedVersion: 2
         x: 32
@@ -205,14 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1e37c46ad1471f70800000000000000
-      internalID: 9157860773530648093
+      spriteID: 9b83b6eff2a509020800000000000000
+      internalID: 2346474568038430905
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_2
+      name: dance1_2
       rect:
         serializedVersion: 2
         x: 64
@@ -226,14 +226,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3b8aef0d72bf36c80800000000000000
-      internalID: -8330538737276639053
+      spriteID: b2136768cbb87bb50800000000000000
+      internalID: 6608904620015497515
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_3
+      name: dance1_3
       rect:
         serializedVersion: 2
         x: 96
@@ -247,14 +247,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d4a1bcbc9468e490800000000000000
-      internalID: -7716807337155910440
+      spriteID: f9554f7e5fad80f70800000000000000
+      internalID: 9153806992323925407
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_4
+      name: dance1_4
       rect:
         serializedVersion: 2
         x: 128
@@ -268,14 +268,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7e86ef60e7c634c0800000000000000
-      internalID: -4308036226769318275
+      spriteID: 1236d5e5e429fc3e0800000000000000
+      internalID: -2031244041632521439
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_5
+      name: dance1_5
       rect:
         serializedVersion: 2
         x: 160
@@ -289,14 +289,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed5b1488f1d04ecd0800000000000000
-      internalID: -2529882661594221090
+      spriteID: 8abf0715278c05820800000000000000
+      internalID: 2905042152972155816
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_6
+      name: dance1_6
       rect:
         serializedVersion: 2
         x: 192
@@ -310,14 +310,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 436f0764517afae30800000000000000
-      internalID: 4517012661093856820
+      spriteID: d88547e5a45e85cd0800000000000000
+      internalID: -2569051479839844211
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_7
+      name: dance1_7
       rect:
         serializedVersion: 2
         x: 224
@@ -331,14 +331,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f95cb5ab485b6b5c0800000000000000
-      internalID: -4199970020809521761
+      spriteID: d8fe0a0010e5eef00800000000000000
+      internalID: 1147958313424580493
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_8
+      name: dance1_8
       rect:
         serializedVersion: 2
         x: 256
@@ -352,14 +352,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad70e523c00460df0800000000000000
-      internalID: -214413511124711462
+      spriteID: 6746f0f1dd163ec50800000000000000
+      internalID: 6693301073539458166
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_9
+      name: dance1_9
       rect:
         serializedVersion: 2
         x: 0
@@ -373,14 +373,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d901376a08c95670800000000000000
-      internalID: 8528067316409240016
+      spriteID: 742eb662b678a6ff0800000000000000
+      internalID: -42072352230743481
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_10
+      name: dance1_10
       rect:
         serializedVersion: 2
         x: 32
@@ -394,14 +394,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 551896847ae24e460800000000000000
-      internalID: 7269986994492113237
+      spriteID: 3dfcf3a4525ed9a10800000000000000
+      internalID: 1917940964651945939
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_11
+      name: dance1_11
       rect:
         serializedVersion: 2
         x: 64
@@ -415,14 +415,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dec2b914261b5cb50800000000000000
-      internalID: 6612886663429041389
+      spriteID: 6062b6992be631650800000000000000
+      internalID: 6202422825176475142
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_12
+      name: dance1_12
       rect:
         serializedVersion: 2
         x: 96
@@ -436,14 +436,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21c3e6199fbb2d6e0800000000000000
-      internalID: -1814181019315717102
+      spriteID: 3dd08897c44629950800000000000000
+      internalID: 6454331495594593747
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_13
+      name: dance1_13
       rect:
         serializedVersion: 2
         x: 128
@@ -457,14 +457,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88d91c57ab8caf7e0800000000000000
-      internalID: -1730850403605439096
+      spriteID: 2d31a04ad2bfad660800000000000000
+      internalID: 7411512310235796434
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_14
+      name: dance1_14
       rect:
         serializedVersion: 2
         x: 160
@@ -478,14 +478,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a16c25acdd9e27bd0800000000000000
-      internalID: -2633785693266852326
+      spriteID: b07c5032e6f958560800000000000000
+      internalID: 7315428465116038923
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_15
+      name: dance1_15
       rect:
         serializedVersion: 2
         x: 192
@@ -499,14 +499,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c78b5061bc37d4390800000000000000
-      internalID: -7832476860842395524
+      spriteID: 918353e591d94b700800000000000000
+      internalID: 555241386353702937
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_16
+      name: dance1_16
       rect:
         serializedVersion: 2
         x: 224
@@ -520,14 +520,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6f5f76e482a119e0800000000000000
-      internalID: -1652360896581771414
+      spriteID: cfc57848fed6717c0800000000000000
+      internalID: -4100688060209472260
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_17
+      name: dance1_17
       rect:
         serializedVersion: 2
         x: 256
@@ -541,14 +541,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9f438244f4d82820800000000000000
-      internalID: 2893796906138554267
+      spriteID: 62c722770cef372a0800000000000000
+      internalID: -6740764114657575898
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_18
+      name: dance1_18
       rect:
         serializedVersion: 2
         x: 0
@@ -562,14 +562,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 435ed5da58c5abc30800000000000000
-      internalID: 4375911717152875828
+      spriteID: e7e19b0da8f31e670800000000000000
+      internalID: 8566197831675223678
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_19
+      name: dance1_19
       rect:
         serializedVersion: 2
         x: 32
@@ -583,14 +583,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0179118e9be695a0800000000000000
-      internalID: -6514760744941555445
+      spriteID: 996353af33741b560800000000000000
+      internalID: 7327716357275203225
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_20
+      name: dance1_20
       rect:
         serializedVersion: 2
         x: 64
@@ -604,14 +604,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63561211a5a680020800000000000000
-      internalID: 2308211744094381366
+      spriteID: 9575751a7217026d0800000000000000
+      internalID: -3017287335313713319
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_21
+      name: dance1_21
       rect:
         serializedVersion: 2
         x: 96
@@ -625,14 +625,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc3c6966cbd599f10800000000000000
-      internalID: 2276954150368887755
+      spriteID: c427ef2a8e27aa120800000000000000
+      internalID: 2425877692784996940
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_22
+      name: dance1_22
       rect:
         serializedVersion: 2
         x: 128
@@ -646,14 +646,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88b6c6ffbd90b13e0800000000000000
-      internalID: -2082059562240939128
+      spriteID: 856b2f621d8cf8dd0800000000000000
+      internalID: -2481544069030693288
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_23
+      name: dance1_23
       rect:
         serializedVersion: 2
         x: 160
@@ -667,14 +667,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a25f984733824a00800000000000000
-      internalID: 739297562307023521
+      spriteID: 654d67ba40d7f4200800000000000000
+      internalID: 166489170246030422
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_24
+      name: dance1_24
       rect:
         serializedVersion: 2
         x: 192
@@ -688,14 +688,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15c8a60a5b51284f0800000000000000
-      internalID: -828075511658148783
+      spriteID: 23a2e59d61aa508f0800000000000000
+      internalID: -574866362307040718
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_25
+      name: dance1_25
       rect:
         serializedVersion: 2
         x: 224
@@ -709,14 +709,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 087a1efaf99a215b0800000000000000
-      internalID: -5399066499948107904
+      spriteID: 126fe807ed6cf05c0800000000000000
+      internalID: -4246957264913631711
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowup casino_26
+      name: dance1_26
       rect:
         serializedVersion: 2
         x: 256
@@ -730,8 +730,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a45b10bcf570c840800000000000000
-      internalID: 5242319694406046887
+      spriteID: daa5d0de55a8273d0800000000000000
+      internalID: -3210351482707813715
       vertices: []
       indices: 
       edges: []
